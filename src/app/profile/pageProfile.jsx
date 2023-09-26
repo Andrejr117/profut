@@ -1,17 +1,17 @@
 import React from "react";
 import Profile from "../components/Profile";
-import { useRouter } from "next/router";
+
 
 
 const UserProfile = () => {
 
     
     const user = {
-        name: 'Matheus felipe',
-        email: 'Matheus888@exmplo.com',
-        idade: 25,
+        nome: 'Matheus felipe',
+        Posiçao: 'Atacante',
         altura: 1.93,
         Pedominante: 'Esquerdo',
+        Nacionalidade: 'Brasileira',
 
 
     };
