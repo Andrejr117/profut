@@ -6,7 +6,7 @@ const Profile = ({ user }) => {
     <div>
       <h1>Perfil de {user.nome}</h1>
       <h1>Posição: {user.Posiçao}</h1>
-      <p>Altura: {user.altura}</p>  
+      <p>Altura: {user.altura}</p>
       <p>Pé Dominante: {user.Pedominante}</p>
       <p>Nacionalidade: {user.Nacionalidade}</p>
     </div>
