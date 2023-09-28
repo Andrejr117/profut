@@ -22,7 +22,7 @@ const UserProfile = () => {
         <div>
             <h1>Detalhamento de Jogador</h1>
             <Profile user={user} />
-
+            <h1>hhh</h1>
         
         </div>
     );

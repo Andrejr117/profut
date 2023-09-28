@@ -6,6 +6,9 @@ import { Form, Formik } from "formik";
 import React from 'react'
 import * as Yup from "yup";
 
+// Importando css
+import styles from './styles.module.css';
+
 
 export default function Login() {
 
@@ -31,7 +34,8 @@ export default function Login() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
+    <main className="min-h-screen flex items-center justify-center flex-col">
+      <h1 className={styles.textForm}> Profut </h1>
       <Formik 
         initialValues={initialValues} 
         validationSchema={validationSchema}
@@ -63,6 +67,7 @@ export default function Login() {
           </Form>
           )}
       </Formik>
+
     </main>
   )
 }
