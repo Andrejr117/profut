@@ -32,10 +32,10 @@ export default function Login() {
   async function handleSubmit() {
 
   }
-
+  // criação de texto linha 38
   return (
     <main className="min-h-screen flex items-center justify-center flex-col">
-      <h1 className={styles.textForm}> Profut </h1>
+      <h1 className={styles.textForm}> Profut </h1> 
       <Formik 
         initialValues={initialValues} 
         validationSchema={validationSchema}
