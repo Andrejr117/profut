@@ -1,6 +1,7 @@
 "use client";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import styles from './styles.module.css';
 import Link from "next/link";
 import { Form, Formik } from "formik";
 import React from 'react'
@@ -31,7 +32,8 @@ export default function Login() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
+    <main className="min-h-screen flex items-center justify-center flex-col">
+      <h1 className={styles.textForm}>Bem vindo ao ProFut, Seu gerenciador de partidas de futebol</h1>
       <Formik 
         initialValues={initialValues} 
         validationSchema={validationSchema}
