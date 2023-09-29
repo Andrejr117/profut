@@ -1,6 +1,6 @@
 "use client";
-import Input from "@/app/components/Input";
-import Button from "@/app/components/Button";
+import Input from "@/components/Input";
+import Button from "@/components/Button";
 import Link from "next/link";
 import { Form, Formik } from "formik";
 import React from 'react'
@@ -11,7 +11,7 @@ export default function Login() {
 
   const initialValues = {
     email: "",
-    password: "",
+    senha: "",
   };
 
   const validationSchema = Yup.object().shape({
@@ -20,7 +20,7 @@ export default function Login() {
       .string()
       .email("Digite um e-mail válido")
       .required("O campo e-mail é obrigatório"),
-    password:
+    senha:
       Yup
       .string()
       .required("O campo senha é obrigatório"),
@@ -40,12 +40,14 @@ export default function Login() {
         {({ values }) => (
           <Form noValidate className="flex flex-col gap-2 p-4 border rounded border-zinc-300 min-w-[300px] bg-white">
             <Input
-              name="Email"
+              name="email"
               type="email"
+              placeholder="E-mail"
               required />
             <Input
-              name="Senha"
+              name="senha"
               type="password"
+              placeholder="Senha"
               required
               autoComplete="off"
             />
