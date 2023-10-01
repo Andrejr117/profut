@@ -33,7 +33,7 @@ export default function Login() {
 
   return (
     <main className="min-h-screen flex items-center justify-center flex-col">
-      <h1 className={styles.textForm}>Bem vindo ao ProFut, Seu gerenciador de partidas de futebol</h1>
+      <h1 className={styles.textForm}>Bem vindo ao ProFut !<p>Seu gerenciador de partidas de futebol</p></h1>
       <Formik 
         initialValues={initialValues} 
         validationSchema={validationSchema}

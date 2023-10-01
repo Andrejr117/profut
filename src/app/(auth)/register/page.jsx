@@ -1,6 +1,7 @@
 "use client";
 import Input from "@/components/Input";
 import Button from "@/components/Button";
+import styles from './styles.module.css';
 import Link from "next/link";
 import { Form, Formik } from "formik";
 import React from 'react'
@@ -31,7 +32,9 @@ export default function Register() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center">
+    <main className="min-h-screen flex items-center justify-center flex-col">
+      <h1 className={styles.textForm}>Crie sua conta e fique pronto para marcar</h1>
+
       <Formik 
         initialValues={initialValues} 
         validationSchema={validationSchema}
