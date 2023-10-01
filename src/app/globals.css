@@ -22,16 +22,4 @@ body {
   width: 100vw;
   height: 100vw;
   overflow: hidden;
-   /* Caminho para a imagem no diretório public */
-   background-image: url('../app/img/logo.jpeg');
-   /* Redimensiona a imagem para cobrir todo o elemento */
-   background-size: 10%; /* Ou defina a largura e a altura desejadas, ex: 100px 50px; */
-   /* Evita que a imagem se repita */
-   background-repeat: no-repeat;
-   /* Mantém a imagem fixa enquanto a página rola */
-   background-attachment: fixed;
-   /* Define a posição da imagem no canto inferior direito */
-   background-position: bottom right;
-   /* Outros estilos de fundo, como cor de fundo de fallback: */
-   background-color: #ffffff;
 }
