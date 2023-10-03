@@ -1,19 +1,18 @@
 import mongoose from "mongoose";
 
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const userSchema = new Schema(
-    {
-        nome: {type: String, required: true },
-        email: {Type: String, required: true, unique: true },
-        senha: {Type: String, required: true },
-        nacionalidade: {Type: String, required: true },
-        altura: { type: Number, required: true },
-        posição: {Type: String, required: true },
-    },
-    { timestamps: true }
+  {
+    nome: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    senha: { type: String, required: true },
+    nacionalidade: { type: String, required: true },
+    posição: { type: String, required: true },
+  },
+  { timestamps: true }
 );
 
-const modelName = mongoose.models.user || mongoose.model("User", userSchema);
+const modelName = mongoose.models.User || mongoose.model("User", userSchema);
 
 export default modelName;

@@ -19,7 +19,6 @@ export default function Register() {
     email: "",
     senha: "",
     nacionalidade: "",
-    altura: "",
     posição: "",
   };
 
@@ -28,29 +27,30 @@ export default function Register() {
     email: Yup.string().email("Digite um e-mail válido").required("O campo e-mail é obrigatório"),
     senha: Yup.string().required("O campo senha é obrigatório"),
     nacionalidade: Yup.string().required("O campo nacionalidade é obrigatório"),
-    altura: Yup.number().required("O campo altura é obrigatório"),
     posição: Yup.string().required("O campo posição é obrigatório"),
   });
 
   async function handleSubmit(values, { resetForm }) {
     setFormSubmitting(true);
     try {
+      console.log("Submetendo formulário..."); // Adicione esta linha
+  
       await fetch("/api/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.Stringify({
+        body: JSON.stringify({
           nome: values.nome,
           email: values.email,
           senha: values.senha,
           nacionalidade: values.nacionalidade,
-          altura: values.altura,
           posição: values.posição,
         }),
       }).then(async (res) => {
-        const result = await res.json()
-
+        console.log("Resposta do servidor recebida..."); // Adicione esta linha
+        const result = await res.json();
+  
         if (result.status === 201) {
           alert(result.message);
           router.push("/login");
@@ -58,15 +58,16 @@ export default function Register() {
           renderError(result.message);
           resetForm();
         }
-
+  
         setFormSubmitting(false);
       });
     } catch (error) {
+      console.error("Erro ao submeter formulário:", error); // Adicione esta linha
       setFormSubmitting(false);
-      renderError("Erro ao criar conta, tente novamente mais tarde !");
-
+      renderError("Erro ao criar conta, tente novamente mais tarde!");
     }
   }
+  
 
   function renderError(msg) {
     setError(msg);
@@ -114,12 +115,6 @@ export default function Register() {
               required
             />
             <Input
-              name="altura"
-              type="number"
-              placeholder="Altura"
-              required
-            />
-            <Input
               name="posição"
               type="text"
               placeholder="Posição"
@@ -127,9 +122,13 @@ export default function Register() {
             />
             <Button
               type="submit"
-              text="Criar conta"
+              text={isFormSubmitting ? "Carregando ..." : "Inscrever-se"}
+              disable={isFormSubmitting}
               className="bg-green-500 text-white rounded p-2 cursor-pointer"
             />
+            {!values.nome && !values.email && !values.senha && !values.nacionalidade && !values.posição && error && (
+              <span className="text-red-500 text-sm text-center">{error}</span>    
+            )}
             <span className="text-xs text-zinc-500">
               Já possui uma conta?
               <strong className="text-zinc-700">
