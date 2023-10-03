@@ -4,10 +4,10 @@ import style from '../perfil/styles.module.css'
 
 const ProfilePage = () => {
 
-
+  
 
   return (
-    <main className={style.ProfilePage}>Meu Perfil</main>
+    <div className={style.ProfilePage}>Perfil do Usuário</div>
     
 
 
