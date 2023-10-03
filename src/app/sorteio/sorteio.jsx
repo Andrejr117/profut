@@ -1,7 +1,9 @@
+"use client"
 import React, { useState } from 'react';
+import Input from '../components/input';
 
 function ShuffleAndDistribute() {
-  const [inputText, setInputText] = useState('');
+  const [input, setInputText] = useState('');
   const [names, setNames] = useState([]);
   const [team1, setTeam1] = useState([]);
   const [team2, setTeam2] = useState([]);

@@ -9,6 +9,7 @@ import * as Yup from "yup";
 
 export default function Login() {
 
+  
   const initialValues = {
     email: "",
     password: "",
@@ -32,6 +33,7 @@ export default function Login() {
 
   return (
     <main className="min-h-screen flex items-center justify-center">
+      <div className="first">Faça seu Login</div>
       <Formik 
         initialValues={initialValues} 
         validationSchema={validationSchema}
