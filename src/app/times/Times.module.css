@@ -1,0 +1,76 @@
+/* Estilo para o contêiner principal */
+.container {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f7f7f7;
+}
+
+/* Estilo para o título */
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o contêiner de entrada de nome */
+.inputContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para a entrada de nome */
+.myInput {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 10px;
+    flex: 1;
+}
+
+/* Estilo para o botão de adicionar nome */
+.addButton {
+    background-color: #5cb85c;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Estilo para o contêiner de botão de sorteio */
+.shuffleButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Estilo para o botão de sorteio */
+.shuffleButton {
+    background-color: #337ab7;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Estilo para o contêiner dos times */
+.teamContainer {
+    display: flex;
+    justify-content: space around;
+}
+
+/* Estilo para cada time */
+.team {
+    width: 48%;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: #fff;
+}

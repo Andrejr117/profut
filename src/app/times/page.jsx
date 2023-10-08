@@ -1,24 +1,12 @@
 "use client";
 import React, { useState } from "react";
 import LayoutAdmin from "@/components/LayoutAdmin";
+import styles from "./Times.module.css";
+import Input from "@/components/Input";
+import { Formik, Field, Form } from "formik";
 
 export default function Times() {
-  return (
-    <LayoutAdmin>
-      <main className="min-h-screen flex justify-center pt-6">
-        return (
-          <div>
-            <h1>Sorteio e Distribuição de Times</h1>
-            <ShuffleAndDistribute />
-          </div>
-        );
-      </main>
-    </LayoutAdmin>
-  );
-}
-
-function ShuffleAndDistribute() {
-  const [inputText, setInputText] = useState('');
+  const [inputText, setInputText] = useState("");
   const [names, setNames] = useState([]);
   const [team1, setTeam1] = useState([]);
   const [team2, setTeam2] = useState([]);
@@ -27,10 +15,10 @@ function ShuffleAndDistribute() {
     setInputText(e.target.value);
   };
 
-  const addName = () => {
-    if (inputText.trim() !== '') {
-      setNames([...names, inputText]);
-      setInputText('');
+  const addName = (values) => {
+    if (values.fieldName.trim() !== "") {
+      setNames([...names, values.fieldName]);
+      values.fieldName = "";
     }
   };
 
@@ -45,35 +33,65 @@ function ShuffleAndDistribute() {
   };
 
   return (
-    <div>
-      <div>
-        <input
-          type="text"
-          value={inputText}
-          onChange={handleInputChange}
-          placeholder="Digite um nome"
-        />
-        <button onClick={addName}>Adicionar</button>
-      </div>
-      <div>
-        <button onClick={shuffleAndDistribute}>Sortear e Distribuir</button>
-      </div>
-      <div>
-        <h2>Time 1:</h2>
-        <ul>
-          {team1.map((name, index) => (
-            <li key={index}>{name}</li>
-          ))}
-        </ul>
-      </div>
-      <div>
-        <h2>Time 2:</h2>
-        <ul>
-          {team2.map((name, index) => (
-            <li key={index}>{name}</li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <LayoutAdmin>
+      <Formik
+        initialValues={{ fieldName: "" }}
+        onSubmit={addName}
+      >
+        {({ values }) => (
+          <main className="min-h-screen flex justify-center pt-6">
+            <div className={styles.container}>
+              <h1 className={styles.title}>Sorteio e Distribuição de Times</h1>
+              <Form>
+                <div className={styles.shuffleContainer}>
+                  <div className={styles.inputContainer}>
+                    <Field name="fieldName">
+                      {({ field }) => (
+                        <Input
+                          className={styles.myInput}
+                          type="text"
+                          {...field}
+                          placeholder="Digite um nome"
+                        />
+                      )}
+                    </Field>
+                    <button className={styles.addButton} type="submit">
+                      Adicionar
+                    </button>
+                  </div>
+                  <div className={styles.shuffleButtonContainer}>
+                    <button
+                      className={styles.shuffleButton}
+                      type="button"
+                      onClick={shuffleAndDistribute}
+                    >
+                      Sortear e Distribuir
+                    </button>
+                  </div>
+                  <div className={styles.teamContainer}>
+                    <div className={styles.team}>
+                      <h2>Time 1:</h2>
+                      <ul>
+                        {team1.map((name, index) => (
+                          <li key={index}>{name}</li>
+                        ))}
+                      </ul>
+                    </div>
+                    <div className={styles.team}>
+                      <h2>Time 2:</h2>
+                      <ul>
+                        {team2.map((name, index) => (
+                          <li key={index}>{name}</li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </Form>
+            </div>
+          </main>
+        )}
+      </Formik>
+    </LayoutAdmin>
   );
 }
