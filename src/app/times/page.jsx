@@ -1,14 +1,24 @@
-"use client"
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import LayoutAdmin from "@/components/LayoutAdmin";
 
-
-export default function Times(){
-    return 
+export default function Times() {
+  return (
     <LayoutAdmin>
-        <main className="min-h-screen flex justify-center pt-6">
-        function ShuffleAndDistribute() {
-  const [input, setInputText] = useState('');
+      <main className="min-h-screen flex justify-center pt-6">
+        return (
+          <div>
+            <h1>Sorteio e Distribuição de Times</h1>
+            <ShuffleAndDistribute />
+          </div>
+        );
+      </main>
+    </LayoutAdmin>
+  );
+}
+
+function ShuffleAndDistribute() {
+  const [inputText, setInputText] = useState('');
   const [names, setNames] = useState([]);
   const [team1, setTeam1] = useState([]);
   const [team2, setTeam2] = useState([]);
@@ -36,7 +46,6 @@ export default function Times(){
 
   return (
     <div>
-      <h1>Sorteio e Distribuição de Times</h1>
       <div>
         <input
           type="text"
@@ -68,11 +77,3 @@ export default function Times(){
     </div>
   );
 }
-
-
-        </main>;
-    </LayoutAdmin>
-}
-
-
-export default ShuffleAndDistribute;
