@@ -1,0 +1,9 @@
+.font{
+    font-size: 2rem; /* 48px */
+    line-height: 2;
+    margin-bottom: 10px;
+    text-align: center  ;
+    font-family: Georgia;
+    white-space: nowrap;
+    
+}
