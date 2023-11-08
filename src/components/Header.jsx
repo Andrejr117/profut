@@ -16,7 +16,7 @@ export default function Header(){
 
 
     return(
-        <div className="flex gap-4 justify-center p-2 flex-wrap">
+        <div className="flex gap-4 justify-center p-2 flex-wrap text-zinc-50">
             <Link href="/">Home</Link>
             <Link href="/perfil">Perfil</Link>
             <Link href="times">Times</Link>
