@@ -22,6 +22,12 @@ export default function Times() {
     }
   };
 
+  const removeName = (index) => {
+    const updatedNames = [...names];
+    updatedNames.splice(index, 1);
+    setNames(updatedNames);
+  };
+
   const shuffleAndDistribute = () => {
     const shuffledNames = [...names].sort(() => Math.random() - 0.5);
     const middleIndex = Math.ceil(shuffledNames.length / 2);
@@ -59,6 +65,21 @@ export default function Times() {
                       Adicionar
                     </button>
                   </div>
+                   {/* Nova seção para mostrar nomes antes do sorteio */}
+                  <div className={styles.namesListContainer}>
+                    <h2>Nomes Adicionados:</h2>
+                    <ul>
+                      {names.map((name, index) => (
+                        <li key={index}>
+                          {name}
+                          <button className={styles.removeButton} type="submit"
+                          onClick={() => removeName(index)}
+                          >  X </button>
+                          </li>
+                      ))}
+                    </ul>
+                  </div>
+                    {/* Fim da nova seção */}
                   <div className={styles.shuffleButtonContainer}>
                     <button
                       className={styles.shuffleButton}
@@ -95,3 +116,4 @@ export default function Times() {
     </LayoutAdmin>
   );
 }
+

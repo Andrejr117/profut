@@ -15,7 +15,8 @@
 }
 
 /* Estilo para o contêiner de entrada de nome */
-.inputContainer {
+.inputContainer
+,.shuffleButtonContainer {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
@@ -41,6 +42,21 @@
     font-size: 16px;
     cursor: pointer;
 }
+.addButton:hover {
+    background-color: #5cb85c;
+  }
+/* Estilo para botão remover nomes*/
+.removeButton {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 4px 8px;
+    font-size: 6px;
+    cursor: pointer;
+}
+.removeButton:hover {
+    background-color: #cc0000; /* Cor de fundo vermelha mais escura ao passar o mouse */
+  }
 
 /* Estilo para o contêiner de botão de sorteio */
 .shuffleButtonContainer {
@@ -59,11 +75,15 @@
     font-size: 16px;
     cursor: pointer;
 }
+.shuffleButton:hover {
+    background-color: #286090;
+    }
+
 
 /* Estilo para o contêiner dos times */
 .teamContainer {
     display: flex;
-    justify-content: space around;
+    justify-content: space-around;
 }
 
 /* Estilo para cada time */
@@ -74,3 +94,4 @@
     padding: 10px;
     background-color: #fff;
 }
+
