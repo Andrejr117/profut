@@ -1,9 +1,11 @@
 .font{
+    
     font-size: 2rem; /* 48px */
+    color: rgb(0, 0, 0);
     line-height: 2;
     margin-bottom: 10px;
     text-align: center  ;
     font-family: Georgia;
-    white-space: nowrap;
+    white-space: nowrap
     
 }

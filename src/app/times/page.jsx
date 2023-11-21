@@ -4,6 +4,9 @@ import LayoutAdmin from "@/components/LayoutAdmin";
 import styles from "./Times.module.css";
 import Input from "@/components/Input";
 import { Formik, Field, Form } from "formik";
+import next from "next";
+import Image from "next/image";
+import gol from '../../../public/timedefutebol.png';
 
 export default function Times() {
   const [inputText, setInputText] = useState("");
@@ -45,13 +48,13 @@ export default function Times() {
         onSubmit={addName}
       >
         {({ values }) => (
-          <main className="min-h-screen flex justify-center pt-6">
+          <main className="min-h-screen flex justify-center pt-6" style={{ backgroundImage: `url(/timedefutebol.png)`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className={styles.container}>
               <h1 className={styles.title}>Sorteio e Distribuição de Times</h1>
               <Form>
                 <div className={styles.shuffleContainer}>
                   <div className={styles.inputContainer}>
-                    <Field name="fieldName">
+                    <Field name="Sorteio">
                       {({ field }) => (
                         <Input
                           className={styles.myInput}
@@ -65,21 +68,23 @@ export default function Times() {
                       Adicionar
                     </button>
                   </div>
-                   {/* Nova seção para mostrar nomes antes do sorteio */}
                   <div className={styles.namesListContainer}>
                     <h2>Nomes Adicionados:</h2>
                     <ul>
                       {names.map((name, index) => (
                         <li key={index}>
                           {name}
-                          <button className={styles.removeButton} type="submit"
-                          onClick={() => removeName(index)}
-                          >  X </button>
-                          </li>
+                          <button
+                            className={styles.removeButton}
+                            type="submit"
+                            onClick={() => removeName(index)}
+                          >
+                            X
+                          </button>
+                        </li>
                       ))}
                     </ul>
                   </div>
-                    {/* Fim da nova seção */}
                   <div className={styles.shuffleButtonContainer}>
                     <button
                       className={styles.shuffleButton}
@@ -116,4 +121,3 @@ export default function Times() {
     </LayoutAdmin>
   );
 }
-

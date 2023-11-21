@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 import Button from "./Button";
 import { signOut, singOut, useSession } from "next-auth/react";
-
+import logo from '../../public/logo.jpeg'
 
 export default function Header(){
 
@@ -16,18 +16,18 @@ export default function Header(){
 
 
     return(
-        <div className="flex gap-4 justify-center p-2 flex-wrap text-zinc-50">
+        <div className="flex gap-3 justify-center p-2 flex-wrap text-xl text-black  bg-gradient-to-r from-green-500">
+            <img class="h-9 w-auto " src="logo.jpeg" alt="" />
             <Link href="/">Home</Link>
             <Link href="/perfil">Perfil</Link>
-            <Link href="times">Times</Link>
-            <span className="bg-zinc-300 rounded-sm px-2">{`Olá ${
-                session?.user?.nome ? session.user.nome[0] : ""
-            }`}</span>
+            <Link href="/times">Times</Link>
+            <span className="bg-zinc-300 text-black rounded-sm px-2">{`Olá ${
+                session?.user?.nome ? session.user.nome[0] : ""}`}
+            </span>
             <Button
                 text="Sair"
-                className="bg-red-600 text-white rounded px-2 cursor-pointer" 
-                onClick={()=>signOut()}
-            />
+                className="bg-red-600 text-black rounded px-2 cursor-pointer" 
+                onClick={()=>signOut()}/>
         </div>
     );
 }

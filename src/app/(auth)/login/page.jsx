@@ -8,7 +8,8 @@ import React, { useEffect, useState } from 'react'
 import * as Yup from "yup";
 import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
-
+import next from "next";
+import campodecima from '../../../../public/campodecima.png'
 
 export default function Login() {
 
@@ -74,15 +75,16 @@ export default function Login() {
   }
 
   return (
-    <main className="min-h-screen flex items-center justify-center flex-col">
-      <h1 className={styles.textForm}>Bem vindo ao ProFut !<p>Seu gerenciador de partidas de futebol</p></h1>
+    <main className="min-h-screen flex items-center justify-center flex-col bg-gradient-to-r from-blue-500 to-green-500 ">
+      <h1 className="relative z-10 text-4xl text-green-500 mb-8 ">Profut</h1>
+        <img className="absolute top-0 left-0 w-full h-full object-cover" src="campodecima.png" alt=""  />
       <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={handleSubmit}
       >
         {({ values }) => (
-          <Form noValidate className="flex flex-col gap-2 p-4 border rounded border-zinc-300 min-w-[300px] bg-white">
+            <Form noValidate className="flex flex-col gap-2 p-4 border rounded-lg border-zinc-300 min-w-[300px] bg-white backdrop-blur-md bg-opacity-80">
             <Input
               name="email"
               type="email"
