@@ -8,11 +8,13 @@ import next from "next";
 import Image from "next/image";
 import gol from '../../../public/timedefutebol.png';
 
+
 export default function Times() {
   const [inputText, setInputText] = useState("");
   const [names, setNames] = useState([]);
-  const [team1, setTeam1] = useState([]);
-  const [team2, setTeam2] = useState([]);
+  const [teams, setTeams] = useState([]);
+  const [numTeams, setNumTeams] = useState(2);
+  const [playersPerTeam, setPlayersPerTeam] = useState(5);
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
@@ -31,30 +33,38 @@ export default function Times() {
     setNames(updatedNames);
   };
 
+  const handleNumTeamsChange = (e) => {
+    setNumTeams(parseInt(e.target.value, 10));
+  };
+
+  const handlePlayersPerTeamChange = (e) => {
+    setPlayersPerTeam(parseInt(e.target.value, 10));
+  };
+
   const shuffleAndDistribute = () => {
     const shuffledNames = [...names].sort(() => Math.random() - 0.5);
-    const middleIndex = Math.ceil(shuffledNames.length / 2);
-    const team1Names = shuffledNames.slice(0, middleIndex);
-    const team2Names = shuffledNames.slice(middleIndex);
+    const teamSize = Math.ceil(shuffledNames.length / numTeams);
 
-    setTeam1(team1Names);
-    setTeam2(team2Names);
+    const newTeams = Array.from({ length: numTeams }, (_, i) => {
+      const startIndex = i * teamSize;
+      const endIndex = startIndex + teamSize;
+      return shuffledNames.slice(startIndex, endIndex);
+    });
+
+    setTeams(newTeams);
   };
 
   return (
     <LayoutAdmin>
-      <Formik
-        initialValues={{ fieldName: "" }}
-        onSubmit={addName}
-      >
+      <Formik initialValues={{ fieldName: "" }} onSubmit={addName}>
         {({ values }) => (
-          <main className="min-h-screen flex justify-center pt-6" style={{ backgroundImage: `url(/timedefutebol.png)`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-            <div className={styles.container}>
-              <h1 className={styles.title}>Sorteio e Distribuição de Times</h1>
-              <Form>
-                <div className={styles.shuffleContainer}>
+          <main className={styles.container}>
+            <h1 className={styles.title}>Sorteio e Distribuição de Times</h1>
+            <Form>
+              <div className={styles.contentContainer}>
+                <div className={styles.inputSection}>
                   <div className={styles.inputContainer}>
-                    <Field name="Sorteio">
+                    <Field name="fieldName">
                       {({ field }) => (
                         <Input
                           className={styles.myInput}
@@ -64,7 +74,7 @@ export default function Times() {
                         />
                       )}
                     </Field>
-                    <button className={styles.addButton} type="submit">
+                    <button className={styles.addButton} type="button" onClick={() => addName(values)}>
                       Adicionar
                     </button>
                   </div>
@@ -74,18 +84,32 @@ export default function Times() {
                       {names.map((name, index) => (
                         <li key={index}>
                           {name}
-                          <button
-                            className={styles.removeButton}
-                            type="submit"
-                            onClick={() => removeName(index)}
-                          >
+                          <button className={styles.removeButton} type="button" onClick={() => removeName(index)}>
                             X
                           </button>
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className={styles.shuffleButtonContainer}>
+                  <div className={styles.configContainer}>
+                    <label>
+                      Número de Times:
+                      <input
+                        type="number"
+                        value={numTeams}
+                        onChange={handleNumTeamsChange}
+                        min="2"
+                      />
+                    </label>
+                    <label>
+                      Jogadores por Time:
+                      <input
+                        type="number"
+                        value={playersPerTeam}
+                        onChange={handlePlayersPerTeamChange}
+                        min="1"
+                      />
+                    </label>
                     <button
                       className={styles.shuffleButton}
                       type="button"
@@ -94,27 +118,23 @@ export default function Times() {
                       Sortear e Distribuir
                     </button>
                   </div>
+                </div>
+                <div className={styles.teamsSection}>
                   <div className={styles.teamContainer}>
-                    <div className={styles.team}>
-                      <h2>Time 1:</h2>
-                      <ul>
-                        {team1.map((name, index) => (
-                          <li key={index}>{name}</li>
-                        ))}
-                      </ul>
-                    </div>
-                    <div className={styles.team}>
-                      <h2>Time 2:</h2>
-                      <ul>
-                        {team2.map((name, index) => (
-                          <li key={index}>{name}</li>
-                        ))}
-                      </ul>
-                    </div>
+                    {teams.map((team, index) => (
+                      <div key={index} className={styles.team}>
+                        <h2>Time {index + 1}:</h2>
+                        <ul>
+                          {team.map((name, innerIndex) => (
+                            <li key={innerIndex}>{name}</li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
                   </div>
                 </div>
-              </Form>
-            </div>
+              </div>
+            </Form>
           </main>
         )}
       </Formik>
