@@ -5,6 +5,8 @@
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f7f7f7
+
+    
 }
 .leftContainer {
     width: 40%;
@@ -12,12 +14,7 @@
 }
 
 /* Estilo da imagem de fundo */
-.imggol{
-  background-image: url(../../../public/imggol.jpg);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-}
+
 
 /* Estilo para o título */
 .title {

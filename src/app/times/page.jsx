@@ -6,7 +6,7 @@ import Input from "@/components/Input";
 import { Formik, Field, Form } from "formik";
 import next from "next";
 import Image from "next/image";
-import gol from '../../../public/timedefutebol.png';
+import gol from '../../../public/imggol.jpg';
 
 
 export default function Times() {
@@ -56,9 +56,9 @@ export default function Times() {
 
   return (
     <LayoutAdmin>
-      <Formik initialValues={{ fieldName: "" }} onSubmit={addName}>
+      <Formik initialValues={{ fieldName: "" }} onSubmit={addName} >
         {({ values }) => (
-          <main className={styles.container}>
+          <main className={styles.container} style={{ backgroundImage: `url(/imggol.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
             <h1 className={styles.title}>Sorteio e Distribuição de Times</h1>
             <Form>
               <div className={styles.contentContainer}>
@@ -71,8 +71,8 @@ export default function Times() {
                           type="text"
                           {...field}
                           placeholder="Digite um nome"
-                        />
-                      )}
+                          />
+                          )}
                     </Field>
                     <button className={styles.addButton} type="button" onClick={() => addName(values)}>
                       Adicionar
@@ -127,16 +127,15 @@ export default function Times() {
                         <ul>
                           {team.map((name, innerIndex) => (
                             <li key={innerIndex}>{name}</li>
-                          ))}
+                            ))}
                         </ul>
                       </div>
-                    ))}
+                  ))}
                   </div>
                 </div>
               </div>
             </Form>
-          </main>
-        )}
+          </main>)}
       </Formik>
     </LayoutAdmin>
   );
