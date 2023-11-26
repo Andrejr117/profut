@@ -58,7 +58,7 @@ export default function Times() {
     <LayoutAdmin>
       <Formik initialValues={{ fieldName: "" }} onSubmit={addName} >
         {({ values }) => (
-          <main className={styles.container} style={{ backgroundImage: `url(/imggol.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
+          <main className={styles.container} style={{ backgroundImage: `url(/imggol.jpg)`, backgroundSize: 'cover', backgroundPosition: 'center', minHeight: '800px', color: 'white' }}>
             <h1 className={styles.title}>Sorteio e Distribuição de Times</h1>
             <Form>
               <div className={styles.contentContainer}>
@@ -66,13 +66,15 @@ export default function Times() {
                   <div className={styles.inputContainer}>
                     <Field name="fieldName">
                       {({ field }) => (
-                        <Input
-                          className={styles.myInput}
-                          type="text"
-                          {...field}
-                          placeholder="Digite um nome"
+                        <div className={styles.myInput}>
+                          <input
+                            type="text"
+                            {...field}
+                            className={styles.inputText}
+                            placeholder="Digite um nome"
                           />
-                          )}
+                        </div>
+                      )}
                     </Field>
                     <button className={styles.addButton} type="button" onClick={() => addName(values)}>
                       Adicionar
@@ -93,7 +95,7 @@ export default function Times() {
                   </div>
                   <div className={styles.configContainer}>
                     <label>
-                      Número de Times:
+                      <span className={styles.whiteText}>Número de Times:</span>
                       <input
                         type="number"
                         value={numTeams}
@@ -102,7 +104,7 @@ export default function Times() {
                       />
                     </label>
                     <label>
-                      Jogadores por Time:
+                      <span className={styles.whiteText}>Jogadores por Time:</span>
                       <input
                         type="number"
                         value={playersPerTeam}
@@ -127,10 +129,10 @@ export default function Times() {
                         <ul>
                           {team.map((name, innerIndex) => (
                             <li key={innerIndex}>{name}</li>
-                            ))}
+                          ))}
                         </ul>
                       </div>
-                  ))}
+                    ))}
                   </div>
                 </div>
               </div>
